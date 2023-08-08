@@ -1,0 +1,1 @@
+import{o as e,c as t,a,u as s,R as c}from"./index-b3494d6f.js";const o={class:"container h-screen flex justify-center items-center mx-auto p-3"},i={__name:"AuthLayout",setup(r){return(n,u)=>(e(),t("div",o,[a(s(c))]))}};export{i as default};
