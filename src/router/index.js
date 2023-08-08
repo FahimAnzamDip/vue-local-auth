@@ -1,5 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '../stores/auth-store.js'
+import AuthLayout from '../layouts/AuthLayout.vue'
+import MainLayout from '../layouts/MainLayout.vue'
+import HomePage from '../pages/HomePage.vue'
+import LoginPage from '../pages/LoginPage.vue'
+import RegisterPage from '../pages/RegisterPage.vue'
+import ErrorNotFound from '../pages/ErrorNotFound.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,36 +13,36 @@ const router = createRouter({
         {
             path: '/auth',
             redirect: '/auth/login',
-            component: () => import('../layouts/AuthLayout.vue'),
+            component: AuthLayout,
             meta: { guest: true },
             children: [
                 {
                     path: 'login',
                     name: 'login',
-                    component: () => import('../pages/LoginPage.vue')
+                    component: LoginPage
                 },
                 {
                     path: 'register',
                     name: 'register',
-                    component: () => import('../pages/RegisterPage.vue')
+                    component: RegisterPage
                 }
             ]
         },
         {
             path: '/',
-            component: () => import('../layouts/MainLayout.vue'),
+            component: MainLayout,
             meta: { auth: true },
             children: [
                 {
                     path: '',
                     name: 'home',
-                    component: () => import('../pages/HomePage.vue')
+                    component: HomePage
                 }
             ]
         },
         {
             path: '/:catchAll(.*)*',
-            component: () => import('../pages/ErrorNotFound.vue')
+            component: ErrorNotFound
         }
     ]
 })
